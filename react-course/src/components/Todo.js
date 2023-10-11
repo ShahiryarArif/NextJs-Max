@@ -1,8 +1,8 @@
-const Todo = () => {
+const Todo = ({ text }) => {
   return (
     <div>
       <div className="card">
-        <h2>TITLE</h2>
+        <h2>{text}</h2>
         <div className="actions">
           <button className="btn">Delete</button>
         </div>
