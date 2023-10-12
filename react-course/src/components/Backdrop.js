@@ -1,5 +1,5 @@
-const Backdrop = () => {
-  return <div className="backdrop" />;
+const Backdrop = ({ onCancel }) => {
+  return <div className="backdrop" onClick={onCancel} />;
 };
 
 export default Backdrop;
