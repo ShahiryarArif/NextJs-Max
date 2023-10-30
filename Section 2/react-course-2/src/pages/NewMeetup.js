@@ -1,7 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import React from "react";
 import NewMeetupForm from "../components/meetups/NewMeetupForm";
 
 const NewMeetup = () => {
+  const navigate = useNavigate();
   function addMeetupHandler(meetupData) {
     fetch(
       "https://react-course-nextjs-max-default-rtdb.firebaseio.com/meetups.json",
@@ -12,7 +14,9 @@ const NewMeetup = () => {
           "Content-Type": "application/json",
         },
       }
-    );
+    ).then(() => {
+      navigate("/");
+    });
   }
   return (
     <section>
