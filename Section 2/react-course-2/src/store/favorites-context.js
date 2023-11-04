@@ -7,6 +7,25 @@ const FavoritesContext = createContext({
 
 function FavoritesContextProvider({ children }) {
   const [userFavorites, setUserFavorites] = useState();
+
+  function addFavoriteHandler(favoriteMeetup) {
+    setUserFavorites((prevUserFavorites) => {
+      return prevUserFavorites.concat(favoriteMeetup);
+    });
+  }
+
+  function removeFavoriteHandler(meetupId) {
+    setUserFavorites((prevUserFavorites) => {
+      return prevUserFavorites.filter((meetup) => meetup.id !== meetupId);
+    });
+  }
+
+  function itemIsFavoriteHandler(meetupId) {
+    setUserFavorites((prevUserFavorites) => {
+      return prevUserFavorites.some((meetup) => meetup.id === meetupId);
+    });
+  }
+
   const context = {
     favorites: userFavorites,
     totalFavorites: userFavorites.length,
