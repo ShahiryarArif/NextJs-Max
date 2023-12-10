@@ -5,6 +5,8 @@ function App() {
     <>
       <h1>Hello World!</h1>
       <Post />
+      <Post />
+      <Post />
     </>
   );
 }
