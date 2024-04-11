@@ -1,15 +1,15 @@
-import React from 'react'
+import React from "react";
+import classes from "./Modal.module.css";
 
-const Modal = () => {
+const Modal = (props) => {
   return (
     <>
-        <div className={classes.backdrop}>
-            <dialog className={classes.modal}>
-                {children}
-            </dialog>
-        </div>
+      <div className={classes.backdrop} onClick={props.onClose} />
+      <dialog open className={classes.modal}>
+        {props.children}
+      </dialog>
     </>
-  )
-}
+  );
+};
 
-export default Modal
+export default Modal;

@@ -5,7 +5,7 @@ function NewPost(props) {
     <form className={classes.form}>
       <p>
         <label htmlFor="body">Text</label>
-        <textarea id="body" required rows={3} onChange={props.setEnteredBody} />
+        <textarea id="body" required rows={3} onChange={(e) => props.setEnteredBody(e.target.value)} />
       </p>
       <p>
         <label htmlFor="name">Your name</label>
@@ -13,7 +13,7 @@ function NewPost(props) {
           type="text"
           id="name"
           required
-          onChange={props.setEnteredAuther}
+          onChange={(e) => props.setEnteredAuther(e.target.value)}
         />
       </p>
     </form>
