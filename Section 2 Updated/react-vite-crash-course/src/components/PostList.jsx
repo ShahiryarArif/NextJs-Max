@@ -5,22 +5,33 @@ import NewPost from "./NewPost";
 import Modal from "./Modal";
 
 const PostList = (props) => {
-  const [enteredBody, setEnteredBody] = useState("");
-  const [enteredAuther, setEnteredAuther] = useState("");
+  const [posts, setPosts] = useState([]);
+  function addPostHandler(post) {
+    setPosts((prevPosts) => {
+      return [post, ...prevPosts];
+    });
+  }
+
   return (
     <>
       {props.isPosting && (
         <Modal isOpen={props.isPosting} onClose={props.onStopPosting}>
-          <NewPost
-            setEnteredBody={setEnteredBody}
-            setEnteredAuther={setEnteredAuther}
-          />
+          <NewPost onCancel={props.onStopPosting} onAddPost={addPostHandler} />
         </Modal>
       )}
-      <ul className={classes.posts}>
-        <Post author="Shahiryar Arif" body="React.js is awesome!" />
-        <Post author="Manuel" body="Checkout the full course!" />
-      </ul>
+      {posts.length > 0 && (
+        <ul className={classes.posts}>
+          {posts.map((post) => (
+            <Post key={post.id} author={post.author} body={post.body} />
+          ))}
+        </ul>
+      )}
+      {posts.length === 0 && (
+        <div style={{ textAlign: "center", color: "white" }}>
+          <h2>There are no posts yet.</h2>
+          <p>Start adding some!</p>
+        </div>
+      )}
     </>
   );
 };
