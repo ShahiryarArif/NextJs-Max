@@ -8,7 +8,7 @@ function Posts() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     <>
-      <Outlet/>
+      <Outlet />
       <PostList
         isPosting={isModalOpen}
         onStopPosting={() => setIsModalOpen(false)}
@@ -18,7 +18,6 @@ function Posts() {
 }
 
 export default Posts;
-
 
 export async function loader() {
   const response = await fetch("http://localhost:8080/posts");
