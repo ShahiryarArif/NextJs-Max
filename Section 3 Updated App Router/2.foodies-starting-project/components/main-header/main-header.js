@@ -16,12 +16,8 @@ const MainHeader = () => {
         </Link>
         <nav className={classes.nav}>
           <ul>
-            <li>
-              <NavLink href="/meals">Browse Meals</NavLink>
-            </li>
-            <li>
-              <NavLink href="/community">Foodies Community</NavLink>
-            </li>
+            <NavLink href="/meals">Browse Meals</NavLink>
+            <NavLink href="/community">Foodies Community</NavLink>
           </ul>
         </nav>
       </header>

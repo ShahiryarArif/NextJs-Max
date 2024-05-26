@@ -15,7 +15,7 @@ export function getMeal(slug) {
 }
 
 export async function saveMeal(meal) {
-  meal.slug = slugify(meal.title, { lower: true });
+  meal.slug = slugify(meal.title, { lower: true }); // lower true enforce all characters to lower case
   meal.instructions = xss(meal.instructions);
 
   const extension = meal.image.name.split(".").pop();
@@ -31,8 +31,18 @@ export async function saveMeal(meal) {
   meal.image = `/images/${fileName}`;
 
   db.prepare(
-    `INSERT INTO meals 
-      (title, summary, instructions, image, creator, creator_email, slug) VALUES 
-      (@title, @summary, @instructions, @image, @creator, @creator_email, @slug)`
+    `
+    INSERT INTO meals 
+      (title, summary, instructions, creator, creator_email, image, slug) 
+      VALUES (
+        @title, 
+        @summary, 
+        @instructions, 
+        @creator, 
+        @creator_email, 
+        @image,
+        @slug
+        )
+        `
   ).run(meal);
 }
