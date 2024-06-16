@@ -2,6 +2,14 @@ import sql from "better-sqlite3";
 import slugify from "slugify";
 import xss from "xss";
 import fs from "node:fs";
+// import { S3 } from '@aws-sdk/client-s3';
+
+/*
+!For AWS S3 bucket
+const s3 = new S3({
+  region: 'us-east-1'
+});
+*/
 
 const db = sql("meals.db");
 
@@ -27,6 +35,16 @@ export async function saveMeal(meal) {
       throw new Error("Saving image failed.");
     }
   });
+
+  /*
+  !For AWS S3 bucket
+    s3.putObject({
+    Bucket: 'maxschwarzmueller-nextjs-demo-users-image',
+    Key: fileName,
+    Body: Buffer.from(bufferedImage),
+    ContentType: meal.image.type,
+  });
+  */
 
   meal.image = `/images/${fileName}`;
 

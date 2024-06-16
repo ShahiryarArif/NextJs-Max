@@ -6,7 +6,7 @@ import { notFound } from "next/navigation";
 const MealDetailsPage = ({ params }) => {
   const meal = getMeal(params.mealSlug);
 
-  if(!meal) {
+  if (!meal) {
     notFound();
   }
 
@@ -17,6 +17,13 @@ const MealDetailsPage = ({ params }) => {
       <header className={classes.header}>
         <div className={classes.image}>
           <Image src={meal.image} alt={meal.title} fill />
+          {/* !For AWS S3 bucket
+          <Image
+            src={`https://maxschwarzmueller-nextjs-demo-users-image.s3.amazonaws.com/${meal.image}`}
+            alt={meal.title}
+            fill
+          />
+          */}
         </div>
         <div className={classes.headerText}>
           <h1>{meal.title}</h1>
